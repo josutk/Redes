@@ -11,6 +11,20 @@ Ubuntu 16.04
 
 ### Procedimentos
 
+* Edição do arquivo: <b>/etc/network/interfaces</b>
+
+```
+auto 'interface interna'
+iface 'interface interna' inet dhcp
+
+auto 'interface externa'
+iface 'interface externa' inet static
+   address 
+   netmask 
+   gateway 
+
+```
+
 * Instalação do isc-dhcp-server:
 ```
 sudo apt install isc-dhcp-server
