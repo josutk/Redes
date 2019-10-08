@@ -55,6 +55,7 @@ option domain-name-servers ;
 * Reiniciar o servidor
 
 ```
+
 sudo service isc-dhcp-server restart
 
 ```
@@ -64,10 +65,13 @@ sudo service isc-dhcp-server restart
 ´´´
 sudo vim /etc/sysctl.conf
 net.ipv4.ip_forward=1
+
 ´´´
 
 # iptables
 
 ´´´
+
 sudo iptables -t nat -A POSTROUTING -o "interface" -j MASQUERADE
+
 ´´´
