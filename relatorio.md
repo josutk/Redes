@@ -62,16 +62,27 @@ sudo service isc-dhcp-server restart
 
 ## Configuração do NAT
 
-´´´
+```
 sudo vim /etc/sysctl.conf
 net.ipv4.ip_forward=1
 
-´´´
+```
 
 # iptables
 
-´´´
+```
 
 sudo iptables -t nat -A POSTROUTING -o "interface" -j MASQUERADE
 
-´´´
+```
+
+# Configuração no cliente dhcp
+
+* Adição da seguinte linha no /etc/network/interfaces
+
+```
+
+auto enps20
+iface enp2s0 inet dhcp
+
+```
