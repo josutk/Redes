@@ -31,6 +31,12 @@ iface enp2s0f1 inet static
    gateway 192.168.100.1
 
 ```
+* Reiniciar a conexão
+
+```
+sudo systemctl restart networking
+
+```
 
 * Instalação do isc-dhcp-server:
 
@@ -41,12 +47,12 @@ sudo apt install isc-dhcp-server
 ```
 
 ## Configuração do servidor DHCP
-* Acessar o arquivo:
+
+* Acessar o arquivo: <b>/etc/default/iscp-dhcp-server</b>
+na seguinte linha de código ela será responsavel por estabelecer qual
+interface irá estabelecer conexão para a rede interna
 
 ```
-    /etc/default/iscp-dhcp-server
-
-    e setar a seguinte linha de comando:
 
     INTERFACES="enp2s0f1"
 ```
@@ -64,7 +70,7 @@ option domain-name-servers 192.168.133.1;
 
 ```
 
-* Reiniciar o servidor
+* Reiniciar o servidor DHCP
 
 ```
 
@@ -101,10 +107,21 @@ auto "interface"
 iface "interface" inet dhcp
 
 ```
-* conferir os leases
+* Reiniciar a conexão nos host
+```
 
+sudo systemctl restart networking
+
+```
+* conferir os leases no servidor
 ```
 
 cat /var/lib/dhcp/dhcpd.leases
 
 ```
+
+# Validação
+
+* ping no ip do servidor dhcp para os hosts
+* ping dos hosts para o servidor dhcp
+* conexão na internet pelos hosts
