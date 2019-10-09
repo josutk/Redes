@@ -13,6 +13,13 @@ Ubuntu 16.04
 
 * Edição do arquivo: <b>/etc/network/interfaces</b>
 
+A interface wlp3s0 irá estabelecer conexão com a rede externa,
+recebendo o endereço de ip do servidor DHCP externo.
+
+Já a interface enp2s0f1 é conectada a rede interna.
+
+obs: nos lugares das interfaces wlp3s0 e enp2s0f1 pode-se colocar as interfaces da máquina que você utilizará como gateway.
+
 ```
 auto wlp3s0
 iface wlp3s0 inet dhcp
@@ -33,6 +40,7 @@ sudo apt install isc-dhcp-server
 
 ```
 
+## Configuração do servidor DHCP
 * Acessar o arquivo:
 
 ```
@@ -72,7 +80,7 @@ net.ipv4.ip_forward=1
 
 ```
 
-# iptables
+Encaminhamento das regras do nat para a interface que faz conexão com a rede interna
 
 ```
 
@@ -84,12 +92,13 @@ sudo iptables -t nat -A POSTROUTING -o enp2s0f1 -j MASQUERADE
 
 * Adição da seguinte linha no /etc/network/interfaces
 
-<b>ifconfig para listar as interfaces de redes do host</b>
+<b>ifconfig para listar as interfaces de redes do host e adicione a seguinte linha de codigo</b>
+
 ```
 ifconfig 
 
-auto enps20
-iface enp2s0 inet dhcp
+auto "interface"
+iface "interface" inet dhcp
 
 ```
 * conferir os leases
