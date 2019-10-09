@@ -1,0 +1,9 @@
+auto wlp3s0
+iface wlp3s0 inet dhcp
+
+auto enp2s0f1
+iface enp2s0f1 inet static
+    address 192.168.100.10
+    netmask 255.255.255.0
+    gateway 192.168.100.1
+
