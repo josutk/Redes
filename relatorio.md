@@ -67,6 +67,12 @@ range 192.168.100.20 192.168.100.100;
 option routers 192.168.100.10;
 option domain-name-servers 192.168.133.1;
 }
+```
+Adicionando os IPs estáticos 
+
+```
+host lds {hardware ethernet 48:4d:7e:fb:f2:d7; fixed-address 192.168.100.21;}
+host casa{hardware ethernet 74:27:ea:74:d8:87; fixed-address 192.168.100.27;}
 
 ```
 
