@@ -27,10 +27,14 @@ iface wlp3s0 inet dhcp
 auto enp2s0f1
 iface enp2s0f1 inet static
    address 192.168.100.10 
-   netmask 255.255.255.0
+   netmask 255.255.0.0
    gateway 192.168.100.1
 
 ```
+para aas configurações acima ficarem persistentes deve-se criar uma nova rede no network manage do ubuntu como segue na imagem
+
+<img src=network_manage.png" />
+
 * Reiniciar a conexão
 
 ```
@@ -60,10 +64,13 @@ interface irá estabelecer conexão para a rede interna
 * Editar o seguinte arquivo: /etc/dhcp/dhcpd.conf
 
 ```
-option subnet-mask 255.255.255.0;
+option domain-name "unb.br"
+option domain-name-server 8.8.8.8, 192.168.133.1
+
+option subnet-mask 255.255.0.0;
 option broadcast-address 192.168.100.255;
-subnet 192.168.100.0 netmask 255.255.255.0 {
-range 192.168.100.20 192.168.100.100;
+subnet 192.168.100.0 netmask 255.255.0.0 {
+range 192.168.0.20 192.168.100.100;
 option routers 192.168.100.10;
 option domain-name-servers 192.168.133.1;
 }
