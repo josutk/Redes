@@ -33,7 +33,7 @@ iface enp2s0f1 inet static
 ```
 para aas configurações acima ficarem persistentes deve-se criar uma nova rede no network manage do ubuntu como segue na imagem
 
-<img src=network_manage.png" />
+<img src="network_manage.png" />
 
 * Reiniciar a conexão
 
